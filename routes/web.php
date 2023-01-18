@@ -21,5 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('dependencias', [App\Http\Controllers\DependenciaController::class, 'index'])->name('dependencias.index');
-
+Route::get('dependencias/create', [App\Http\Controllers\DependenciaController::class, 'create'])->name('dependencias.create');
+Route::post('dependencias/store', [App\Http\Controllers\DependenciaController::class, 'store'])->name('dependencias.store');
 // Route::resource('dependencias', App\Http\Controllers\DependenciaController::class);

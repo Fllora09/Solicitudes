@@ -20,12 +20,11 @@ class DependenciaController extends Controller
      */
     public function index()
     {
-        $dependencias = Dependencia::paginate();
+        $dependencias = Dependencia::all();
+        return view('dependencia.index',['dependencias'=>$dependencias]);
 
-        return view('dependencia.index', compact('dependencias'))
-            ->with('i', (request()->input('page', 1) - 1) * $dependencias->perPage());
-
-        return view('dependencia.index');
+        // $dependencias = Dependencia::paginate();
+        //     ->with('i', (request()->input('page', 1) - 1) * $dependencias->perPage());
     }
 
     /**
@@ -35,8 +34,10 @@ class DependenciaController extends Controller
      */
     public function create()
     {
-         $dependencia = new Dependencia();
-         return view('dependencia.create', compact('dependencia'));
+        return view('dependencia.create',compact('dependencia'));
+        //  $dependencia = new Dependencia();
+        //  return view('dependencia.create', compact('dependencia'));
+
     }
 
     /**
@@ -47,11 +48,13 @@ class DependenciaController extends Controller
      */
     public function store(Request $request)
     {
+        $dependencia = new Dependencia();
+        $dependencia->nameDp = $request->nameDp;
+        $dependencia->save();
+        return redirect()->route('dependencias.index');
 
         // request()->validate(Dependencia::$rules);
-
-        // $dependencia = Dependencia::create($request);
-
+        //  $dependencia = Dependencia::create($request);
         // return redirect()->route('dependencias.index')
         //     ->with('success', 'Dependencia created successfully.');
     }

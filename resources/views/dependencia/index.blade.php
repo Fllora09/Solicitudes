@@ -17,12 +17,14 @@
                                 <span id="card_title">
                                     {{ __('Dependencia') }}
                                 </span>
-
                                 <div class="float-right">
-                                    {{-- <a href="{{ route('dependencias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Create New') }}
-                                    </a> --}}
+                                    <a class="btn btn-primary" href="{{ route('dependencias.create') }}"> Agregar</a>
                                 </div>
+                                {{-- <div class="float-right">
+                                    <a href="{{ route('dependencias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Create New') }}
+                                    </a>
+                                </div> --}}
                             </div>
                         </div>
                         @if ($message = Session::get('success'))
@@ -37,17 +39,18 @@
                                     <thead class="thead">
                                         <tr>
                                             <th>No</th>
-                                            <th>Namedp</th>
-
-                                            <th></th>
+                                            <th>Dependencia</th>
+                                            <th>Fecha creacion</th>
+                                            <th>Actualizado</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                          @foreach ($dependencias as $dependencia)
                                             <tr>
+                                                {{-- {{ $i++ }} --}}
                                                 <td>{{ $dependencia->IdDp }}</td>
                                                 <td>{{ $dependencia->nameDp }}</td>
-
+                                                <td>{{ $dependencia->created_at }}</td>
                                               {{--  <td>
                                                     <form method="POST">
                                                         <a class="btn btn-sm btn-primary " href="{{ route('dependencias.show',$dependencia->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
@@ -66,7 +69,6 @@
                             </div>
                         </div>
                     </div>
-                    {!! $dependencias->links() !!}
                 </div>
             </div>
         </div>

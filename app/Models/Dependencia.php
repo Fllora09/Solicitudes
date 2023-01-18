@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Dependencia
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Dependencia extends Model
 {
-
+    use HasFactory;
     static $rules = [
 		// 'IdDp' => 'required',
 		'nameDp' => 'required',
@@ -31,7 +32,9 @@ class Dependencia extends Model
      * @var array
      */
     // protected $fillable = ['IdDp','nameDp'];
-     protected $fillable = ['nameDp'];
+     protected $fillable = [
+
+        'nameDp'];
 
 
 
