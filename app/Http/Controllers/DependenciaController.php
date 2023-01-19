@@ -34,7 +34,7 @@ class DependenciaController extends Controller
      */
     public function create()
     {
-        return view('dependencia.create',compact('dependencia'));
+        return view('dependencia.create');
         //  $dependencia = new Dependencia();
         //  return view('dependencia.create', compact('dependencia'));
 
@@ -48,10 +48,22 @@ class DependenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $dependencia = new Dependencia();
-        $dependencia->nameDp = $request->nameDp;
-        $dependencia->save();
-        return redirect()->route('dependencias.index');
+        $campo=[
+            'nameDp' => 'required|string|max:30'
+         ];
+         $this->validate($request,$campo);
+
+         $dependencia = request() ->except('_token');
+
+         Dependencia::insert($dependencia);
+         return redirect()->route('dependencias.index');
+
+        // $request->validate([
+        //     'nameDp' => 'required|max:'
+        // ]);
+        // $dependencia = new Dependencia();
+        // $dependencia->nameDp = $request->nameDp;
+        // $dependencia->save();
 
         // request()->validate(Dependencia::$rules);
         //  $dependencia = Dependencia::create($request);

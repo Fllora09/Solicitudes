@@ -7,13 +7,10 @@
             {!! $errors->first('IdDp', '<div class="invalid-feedback">:message</div>') !!}
         </div> --}}
         <div class="form-group">
-            {{ Form::label('nameDp') }}
-            {{ Form::text('nameDp', $dependencia->nameDp, ['class' => 'form-control' . ($errors->has('nameDp') ? ' is-invalid' : ''), 'placeholder' => 'Namedp']) }}
-            {!! $errors->first('nameDp', '<div class="invalid-feedback">:message</div>') !!}
+            <label class="font-weight-bold" for="itemN-16">Dependencia</label>
+            <input type="text" name="nameDp" class="form-control @error('nameDp') is-invalid @enderror" value="{{isset( $dependencia->nameDp) ?$dependencia->nameDp:old('nameDp')}}" >
+            {{-- {{ Form::text('nameDp', $dependencia->nameDp, ['class' => 'form-control' . ($errors->has('nameDp') ? ' is-invalid' : ''), 'placeholder' => 'Dependencia']) }}
+            {!! $errors->first('nameDp', '<div class="invalid-feedback">:message</div>') !!} --}}
         </div>
-
-    </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>

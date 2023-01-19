@@ -27,7 +27,9 @@
                                 @csrf
 
                                 @include('dependencia.form')
-
+                                <div class="box-footer mt20">
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                </div>
                             </form>
                         </div>
                     </div>
