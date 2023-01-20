@@ -41,7 +41,7 @@
                                             <th>No</th>
                                             <th>Dependencia</th>
                                             <th>Fecha creacion</th>
-                                            <th>Actualizado</th>
+                                            <th>Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,17 +51,23 @@
                                                 <td>{{ $dependencia->IdDp }}</td>
                                                 <td>{{ $dependencia->nameDp }}</td>
                                                 <td>{{ $dependencia->created_at }}</td>
-                                              {{--  <td>
+                                               <td>
                                                     <form method="POST">
-                                                        <a class="btn btn-sm btn-primary " href="{{ route('dependencias.show',$dependencia->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                        <a class="btn btn-sm btn-success" href="{{ route('dependencias.edit',$dependencia->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('dependencias.edit',$dependencia->IdDp) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    </form>
+                                                    <form action="{{ route('dependencias.destroy',$dependencia->IdDp) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    </form>
+                                                   {{--  <form method="POST">
+                                                       <a class="btn btn-sm btn-primary " href="{{ route('dependencias.show',$dependencia->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     </form>
                                                     <form action="{{ route('dependencias.destroy',$dependencia->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                    </form>
-                                                </td>--}}
+                                                    </form>--}}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -49,15 +49,15 @@ class DependenciaController extends Controller
     public function store(Request $request)
     {
         $campo=[
-            'nameDp' => 'required|string|max:30'
+            'nameDp' => 'required|string|min:3|max:30'
          ];
          $this->validate($request,$campo);
 
          $dependencia = request() ->except('_token');
 
          Dependencia::insert($dependencia);
-         return redirect()->route('dependencias.index');
-
+         return redirect()->route('dependencias.index')
+         ->with('success', 'Nueva dependencia ha sido creada.');
         // $request->validate([
         //     'nameDp' => 'required|max:'
         // ]);
@@ -77,24 +77,23 @@ class DependenciaController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        // $dependencia = Dependencia::find($id);
-
-        // return view('dependencia.show', compact('dependencia'));
-    }
+    // public function show($id)
+    // {
+    //     $dependencia = Dependencia::find($id);
+    //     return view('dependencia.edit', ['dependencia'=>$dependencia]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int $IdDp
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($IdDp)
     {
-        // $dependencia = Dependencia::find($id);
-
-        // return view('dependencia.edit', compact('dependencia'));
+         //return view('dependencia.edit');
+       $dependencia = Dependencia::findOrFail($IdDp);
+         return view('dependencia.edit',['dependencia'=>$dependencia]);
     }
 
     /**
@@ -106,24 +105,32 @@ class DependenciaController extends Controller
      */
     public function update(Request $request, Dependencia $dependencia)
     {
+        $dependencia = Dependencia::find($request->IdDp);
+        $dependencia->nameDp = $request->nameDp;
+        $dependencia->save();
+
+         return redirect()->route('dependencias.index');
+
+        // $dependencia = request() ->except('_token');
+        // Dependencia::where('IdDp','=',$id)->update($dependencia);
+        // $dependencia = Dependencia::find($id);
+
         // request()->validate(Dependencia::$rules);
-
         // $dependencia->update($request->all());
-
         // return redirect()->route('dependencias.index')
         //     ->with('success', 'Dependencia updated successfully');
     }
 
     /**
-     * @param int $id
+     * @param int $IdDp
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy($IdDp )
     {
-        // $dependencia = Dependencia::find($id)->delete();
+         $dependencia = Dependencia::find($IdDp)->delete();
 
-        // return redirect()->route('dependencias.index')
-        //     ->with('success', 'Dependencia deleted successfully');
+         return redirect()->route('dependencias.index')
+             ->with('success', 'Dependencia eliminada');
     }
 }

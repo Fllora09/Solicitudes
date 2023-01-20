@@ -31,7 +31,9 @@ class Dependencia extends Model
      *
      * @var array
      */
-    // protected $fillable = ['IdDp','nameDp'];
-     protected $fillable = [  'nameDp'];
+     protected $fillable = ['IdDp','nameDp'];
+
+     protected $primaryKey = 'IdDp';
+    // protected $fillable = [  'nameDp'];
 
 }
