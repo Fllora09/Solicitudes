@@ -11,8 +11,6 @@ use Illuminate\Http\Request;
  */
 class DependenciaController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -49,14 +47,14 @@ class DependenciaController extends Controller
     public function store(Request $request)
     {
         $campo=[
-            'nameDp' => 'required|string|min:3|max:30'
-         ];
-         $this->validate($request,$campo);
+            'nameDp' => 'required|string|alpha|unique:dependencias|min:3|max:30'
+        ];
+        $this->validate($request,$campo);
 
-         $dependencia = request() ->except('_token');
+        $dependencia = request() ->except('_token');
 
-         Dependencia::insert($dependencia);
-         return redirect()->route('dependencias.index')
+        Dependencia::insert($dependencia);
+        return redirect()->route('dependencias.index')
          ->with('success', 'Nueva dependencia ha sido creada.');
         // $request->validate([
         //     'nameDp' => 'required|max:'

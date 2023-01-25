@@ -1,28 +1,21 @@
 @extends('adminlte::page')
 
 @section('content')
-<div class="container">
+<div class="container pt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-
-                <div class="card-body">
-                    <p>Welcome to this beautiful admin panel.</p>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!
-                    aqui es donde se indicara que es lo primero que hara el admin,
-                     osea que ingresar las dependencias') }}
-
+        <div class="col-md-8 border-info">
+            <div class="card text-center border-info mb-3">
+                <div class="card-header bg-info">
+                  <h5>Solicitudes para soporte tecnico</h5>
                 </div>
-            </div>
+                <div class="card-body ">
 
+                  <p class="card-text text-info">Puedes ir generando tus solicitudes.</p>
+                </div>
+                <div class="card-footer ">
+                <a href="#" class="btn btn-info">Agregar Solicitud</a>
+                </div>
+              </div>
         </div>
     </div>
 </div>

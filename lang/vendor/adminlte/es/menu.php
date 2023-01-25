@@ -17,6 +17,8 @@ return [
     'warning'                       => 'Advertencia',
     'information'                   => 'Información',
     'technician'                    => 'Tecnicos',
-    'mantenimiento_correctivo'      => 'Mantenimineto',
+    'mantenimiento_correctivo'      => 'Mantenimiento',
     'ofice'                         => 'Dependencias',
+    'users'                         => 'Usuarios',
+    'search'                        => 'Buscar',
 ];

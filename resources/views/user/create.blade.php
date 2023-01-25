@@ -1,32 +1,32 @@
-{{-- @extends('layouts.app') --}}
-@extends('adminlte::page')
+@extends('layouts.layout2')
+
 @section('content')
     @section('template_title')
-        Create Dependencia
+        Registrar Usuario
     @endsection
 
     @section('content')
-        <section class="content container-fluid pt-5">
-            <div class="row">
+        <section class="content ">
+            <div class=" container-fluid pt-5 row">
                 <div class="col-md-12">
 
                     @includeif('partials.errors')
 
                     <div class="card card-default">
                         <div class="card-header">
-                            <span class="card-title">Nueva Dependencia</span>
+                            <span class="card-title"> Registrar Usuario</span>
                             <div class="float-right">
-                                <a class="btn btn-secondary btn-sm" href="{{ route('dependencias.index') }}" >
-                                Volver a Dependencias
+                                <a class="btn btn-secondary btn-sm" href="{{ route('users.index') }}" >
+                                Volver
                                 </a>
                             </div>
                         </div>
                         <div class="card-body">
-                            {{-- <form method="POST" action="{{ route('dependencias.store') }}"  role="form" enctype="multipart/form-data"> --}}
-                            <form method="POST" action="{{ route('dependencias.store') }}"  role="form" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
                                 @csrf
 
-                                @include('dependencia.form')
+                                @include('user.form')
+
                                 <div class="box-footer mt20">
                                     <button type="submit" class="btn btn-primary">Agregar</button>
                                 </div>

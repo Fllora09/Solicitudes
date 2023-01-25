@@ -6,7 +6,7 @@
     @endsection
 
     @section('content')
-        <section class="content container-fluid">
+        <section class="content container-fluid pt-5">
             <div class="">
                 <div class="col-md-12">
 
@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="box-footer mt20">
-                                    <a class="btn btn-primary" href="{{ route('dependencias.index') }}" >Cancelar</a>
+                                    <a class="btn btn-light" href="{{ route('dependencias.index') }}" >Cancelar</a>
                                     <button type="submit" class="btn btn-primary">Editar</button>
                                 </div>
                             </form>

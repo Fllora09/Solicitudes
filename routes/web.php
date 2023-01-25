@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -28,4 +28,18 @@ Route::post('dependencias/store', [App\Http\Controllers\DependenciaController::c
 Route::get('dependencias/edit/{IdDp}', [App\Http\Controllers\DependenciaController::class, 'edit'])->name('dependencias.edit');
 Route::patch('dependencias/actualizar', [App\Http\Controllers\DependenciaController::class, 'update'])->name('dependencias.update');
 Route::post('dependencias/eliminar/{IdDp}', [App\Http\Controllers\DependenciaController::class, 'destroy'])->name('dependencias.destroy');
-// Route::resource('dependencias', App\Http\Controllers\DependenciaController::class);
+
+// Usuarios
+Route::get('usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::get('usuarios/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+//Route::get('usuarios/editar/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+Route::patch('usuarios/actualizar', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+Route::post('usuarios/eliminar/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+
+
+// Registration
+Route::get('usuarios/crear', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+Route::post('usuarios/registrar', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+
+
+

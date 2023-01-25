@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Direccion de IT') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,9 +19,10 @@
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color: #acddff;">
             <div class="container">
-                <a class="navbar-brand" >
+                <a class="navbar-brand mb-0 h1" >
+                    <img src="vendor/adminlte/dist/img/DIT.png" width="30" height="30" class="d-inline-block align-top" alt="">
                     {{ config('app.name', 'Direccion de IT') }}
                 </a>
 
@@ -41,13 +42,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
                                 </li>
                             @endif
                         @else
@@ -80,11 +81,11 @@
         </main>
         @section('css')
         <link rel="stylesheet" href="/css/admin_custom.css">
-    @stop
+        @stop
 
-    @section('js')
-        <script> console.log('Hi!'); </script>
-    @stop
+        @section('js')
+            <script> console.log('Hi!'); </script>
+        @stop
 
     </div>
 </body>

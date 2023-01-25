@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/DIT.png',
             'alt' => 'animacion DIT',
@@ -331,9 +331,9 @@ return [
 
         ],
         [
-            'text' => 'user',
-            //'route' => 'home',
-            'url'  => '#',
+            'text' => 'users',
+            'route' => 'users.index',
+           // 'url'  => '#',
             'icon' => 'fas fa-fw fa-users',
             'icon_color' => 'cyan',
         ],

@@ -9,6 +9,11 @@
         <div class="form-group">
             <label class="font-weight-bold" for="itemN-16">Dependencia</label>
             <input type="text" name="nameDp" class="form-control @error('nameDp') is-invalid @enderror" value="{{isset( $dependencia->nameDp) ?$dependencia->nameDp:old('nameDp')}}" >
+                @error('nameDp')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             {{-- {{ Form::text('nameDp', $dependencia->nameDp, ['class' => 'form-control' . ($errors->has('nameDp') ? ' is-invalid' : ''), 'placeholder' => 'Dependencia']) }}
             {!! $errors->first('nameDp', '<div class="invalid-feedback">:message</div>') !!} --}}
         </div>
