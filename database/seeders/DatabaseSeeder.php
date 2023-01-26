@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         Dependencia::factory(20)->create();
 
         $this ->call(UserSeeder::class);
+        $this->call([StatusesSeeder::class]);
+        $this->call([SolucionSoliSeeder::class]);
+        $this->call(TipoTrbMntmientoSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 
@@ -24,5 +27,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
     }
 }

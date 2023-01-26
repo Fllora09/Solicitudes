@@ -64,6 +64,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function solicitudes() {
+        return $this->hasMany('App\Models\Solicitude');
+    }
 
 
 }

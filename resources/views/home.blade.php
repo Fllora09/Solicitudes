@@ -25,9 +25,9 @@
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
-@section('js')
+{{-- @section('js')
 <script> Swal.fire(
     'Hola!',
     'Debes agregra las dependencias solicitantes'
   )</script>
-@stop
+@stop --}}

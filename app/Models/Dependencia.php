@@ -36,4 +36,7 @@ class Dependencia extends Model
      protected $primaryKey = 'IdDp';
     // protected $fillable = [  'nameDp'];
 
+    public function solicitudes() {
+        return $this->hasMany('App\Models\Solicitude');
+    }
 }

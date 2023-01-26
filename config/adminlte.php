@@ -351,7 +351,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'level_one',
-                    'url'  => '#',
+                    'route' => 'solicitudes.create',
                 ],
                 [
                     'text'    => 'level_two',
