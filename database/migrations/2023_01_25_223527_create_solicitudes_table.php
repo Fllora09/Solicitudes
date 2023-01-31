@@ -20,13 +20,19 @@ return new class extends Migration
                 $table->text('detailSoli');
 
                 $table->unsignedBigInteger('status')->default('1');
-                $table->foreign('status')->references('idStatus')->on('statuses');
+                $table->foreign('status')
+                ->references('idStatus')
+                ->on('statuses');
 
                 $table->unsignedBigInteger('user');
-                $table->foreign('user')->references('id')->on('users');
+                $table->foreign('user')
+                ->references('id')
+                ->on('users');
 
                 $table->unsignedBigInteger('dependencia');
-                $table->foreign('dependencia')->references('IdDp')->on('dependencias');
+                $table->foreign('dependencia')
+                ->references('IdDp')
+                ->on('dependencias');
 
                 $table->timestamps();
         });

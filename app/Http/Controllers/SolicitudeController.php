@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Solicitude;
 use Illuminate\Http\Request;
 use App\Models\Dependencia;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
 use App\Notifications\NuevaSolicitudCreada;
 
@@ -19,9 +20,21 @@ class SolicitudeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $solicitudes = Solicitude::all();
+        // $solicitudes = Solicitude::with('dependencias', 'statuses', 'users')
+        // ->when($request->has('status'), function (Builder $query) use ($request) {
+        //     return $query->where('status', $request->status);
+        // })
+        // ->when($request->has('users'), function (Builder $query) use ($request) {
+        //     return $query->where($request->user);
+        // })
+        //
+
+         $solicitudes = Solicitude::all()
+         ->when($request->has('dependencia'), function (Builder $query) use ($request) {
+            return $query->whereRelation('nameDp', 'IdDp', $request->dependencia);
+         });
         return view('solicitude.index', compact('solicitudes'));
             // ->with('i', (request()->input('page', 1) - 1) * $solicitudes->perPage());
     }

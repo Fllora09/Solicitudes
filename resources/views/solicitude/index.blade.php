@@ -49,7 +49,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($solicitudes as $solicitude)
+                                            @forelse ($solicitudes as $solicitude)
                                                 <tr>
                                                     {{-- <td>{{ ++$i }}</td> --}}
 
@@ -59,6 +59,12 @@
                                                     <td>{{ $solicitude->status }}</td>
                                                     <td>{{ $solicitude->user}}</td>
                                                     <td>{{ $solicitude->dependencia }}</td>
+
+                                                    {{-- @foreach($solicitude->dependencias as $dependencia)
+                                                        <td>{{ $dependencia->nameDp }}</td>
+                                                    @endforeach --}}
+
+                                                    {{-- --}}
 
                                                     <td>
                                                         <form method="POST">
@@ -82,7 +88,11 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            @empty
+                                                <tr>
+                                                    <td class="px-4 py-3" colspan="4">No se encontraron solicitudes.</td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>

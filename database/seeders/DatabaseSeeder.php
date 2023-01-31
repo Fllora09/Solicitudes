@@ -17,9 +17,11 @@ class DatabaseSeeder extends Seeder
         Dependencia::factory(20)->create();
 
         $this ->call(UserSeeder::class);
-        $this->call([StatusesSeeder::class]);
-        $this->call([SolucionSoliSeeder::class]);
+        $this->call(StatusesSeeder::class);
+        $this->call(SolucionSoliSeeder::class);
         $this->call(TipoTrbMntmientoSeeder::class);
+        $this->call(RolesSeeder::class);
+
 
         // \App\Models\User::factory(10)->create();
 
