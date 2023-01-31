@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
  * Class Solicitude
  *
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
 class Solicitude extends Model
 {
 
+
     static $rules = [
 		'idSolitd' => 'required',
 		'titulo' => 'required',
@@ -43,32 +45,30 @@ class Solicitude extends Model
      */
     protected $fillable = ['idSolitd','titulo','detailSoli','status','user','dependencia'];
 
-
+    protected $table = 'solicitudes';
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\Belongsto
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function dependencia()
+    public function dependencias()
     {
-         return $this->belongsTo(Dependencia::class);
+         return $this->belongsTo(Dependencia::class, 'IdDp','nameDp');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\Belongsto
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function status()
+    public function statuses()
     {
         // return $this->hasOne('App\Models\Statuses', 'idStatus', 'statusName');
         return $this->belongsTo(Statuses::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class, 'id', 'user' );
         // return $this->hasOne('App\Models\User', 'id', 'user');
     }
-
-
 }

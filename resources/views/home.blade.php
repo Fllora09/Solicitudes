@@ -13,7 +13,7 @@
                   <p class="card-text text-info">Puedes ir generando tus solicitudes.</p>
                 </div>
                 <div class="card-footer ">
-                <a href="#" class="btn btn-info">Agregar Solicitud</a>
+                <a href="{{ route('solicitudes.create') }}" class="btn btn-info">Solicitud</a>
                 </div>
               </div>
         </div>

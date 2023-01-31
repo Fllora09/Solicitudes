@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Notifications\NuevaSolicitudCreada;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +48,15 @@ Route::middleware('auth')->group(function () {
     //Hacer Solicitudes
     Route::get('solicitudes/crear', [App\Http\Controllers\SolicitudeController::class, 'create'])->name('solicitudes.create');
     Route::post('solicitudes/store', [App\Http\Controllers\SolicitudeController::class, 'store'])->name('solicitudes.store');
+    //se crea la notificacion en el email que diga que una solicitud fue creada
+    Route::get('solicitudes', [App\Http\Controllers\SolicitudeController::class, 'index'])->name('solicitudes.index');
+
+    Route::get('inicio', function(){
+        $user = App\Models\User::first();
+        $user->notify(new NuevaSolicitudCreada("Un nuevo usuario ha dejado una solicitud."));
+        return view('home');
+
+        // $solicitude = notify(new NuevaSolicitudCreada());
+    })->name('notificacion');
 });
 

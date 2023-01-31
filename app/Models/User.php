@@ -64,8 +64,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function solicitudes() {
-        return $this->hasMany('App\Models\Solicitude');
+        return $this->hasMany(Solicitude::class);
     }
 
 

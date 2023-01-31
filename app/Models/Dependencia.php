@@ -34,9 +34,9 @@ class Dependencia extends Model
      protected $fillable = ['IdDp','nameDp'];
 
      protected $primaryKey = 'IdDp';
-    // protected $fillable = [  'nameDp'];
 
+     protected $table = 'dependencias';
     public function solicitudes() {
-        return $this->hasMany('App\Models\Solicitude');
+        return $this->hasMany(Solicitude::class, 'idSolitd','titulo');
     }
 }

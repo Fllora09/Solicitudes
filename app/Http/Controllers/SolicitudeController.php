@@ -6,6 +6,7 @@ use App\Models\Solicitude;
 use Illuminate\Http\Request;
 use App\Models\Dependencia;
 use App\Models\User;
+use App\Notifications\NuevaSolicitudCreada;
 
 /**
  * Class SolicitudeController
@@ -20,10 +21,9 @@ class SolicitudeController extends Controller
      */
     public function index()
     {
-        $solicitudes = Solicitude::paginate();
-
-        return view('solicitude.index', compact('solicitudes'))
-            ->with('i', (request()->input('page', 1) - 1) * $solicitudes->perPage());
+        $solicitudes = Solicitude::all();
+        return view('solicitude.index', compact('solicitudes'));
+            // ->with('i', (request()->input('page', 1) - 1) * $solicitudes->perPage());
     }
 
     /**
@@ -33,17 +33,8 @@ class SolicitudeController extends Controller
      */
     public function create(Request $request)
     {
-        $solicitude = new Solicitude();
-        $users= $request->user()->name;
-        //$users=\Auth::user()->name;
-       // $users->id = auth()->id();
-         // $users = auth()->user();
-       // $users = User::role('agent')->orderBy('name')->pluck('name', 'id');
-        // $user = User::find($id);
-        // $users->id = auth()->id();
-       // $users->id = $request->user()->id;
         $dependencias = Dependencia::all();
-        return view('solicitude.create',compact('solicitude','dependencias','users'));
+        return view('solicitude.create',compact('dependencias', /* 'solicitude' */));
     }
 
     /**
@@ -54,12 +45,36 @@ class SolicitudeController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Solicitude::$rules);
+        $campos=[
+            'titulo' => 'required|string|min:5|max:30',
+            'detailSoli' => 'required|string|min:5|max:100',
+            // 'dependencia' => 'required',
+        ];
 
-        $solicitude = Solicitude::create($request->all());
+        $this->validate($request,$campos);
 
-        return redirect()->route('solicitudes.index')
-            ->with('success', 'Solicitude created successfully.');
+        $solicitude = new Solicitude();
+        $solicitude->titulo = $request->titulo;
+        $solicitude->detailSoli = $request->detailSoli;
+        $solicitude->user = $request->user()->id;
+        $solicitude->dependencia = $request->dependencia;
+        $solicitude->save();
+
+
+        // $users= $request->user()->name;
+        //$users=\Auth::user()->name;
+       // $users->id = auth()->id();
+         // $users = auth()->user();
+       // $users = User::role('agent')->orderBy('name')->pluck('name', 'id');
+        // $user = User::find($id);
+        // $users->id = auth()->id();
+        // request()->validate(Solicitude::$rules);
+
+         // $solicitude = notify(new NuevaSolicitudCreada());
+
+         return redirect()->route('notificacion')
+         //return redirect()->route('solicitudes.index')
+            ->with('success', 'Solicitud creada.');
     }
 
     /**

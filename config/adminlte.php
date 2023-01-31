@@ -355,7 +355,7 @@ return [
                 ],
                 [
                     'text'    => 'level_two',
-                    'url'     => '#',
+                    'route'     => 'solicitudes.index',
                 ],
                 [
                     'text' => 'level_three',
