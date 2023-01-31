@@ -86,7 +86,6 @@ class SolicitudeController extends Controller
          // $solicitude = notify(new NuevaSolicitudCreada());
 
          return redirect()->route('notificacion')
-         //return redirect()->route('solicitudes.index')
             ->with('success', 'Solicitud creada.');
     }
 

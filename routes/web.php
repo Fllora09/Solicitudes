@@ -58,5 +58,9 @@ Route::middleware('auth')->group(function () {
 
         // $solicitude = notify(new NuevaSolicitudCreada());
     })->name('notificacion');
+
+    Route::get('solicitudes/detalles/{id}', [App\Http\Controllers\SolicitudeController::class, 'show'])->name('solicitudes.show');
+    // Route::patch('solicitud/actualizar', [App\Http\Controllers\SolicitudeController::class, 'update'])->name('users.update');
+
 });
 

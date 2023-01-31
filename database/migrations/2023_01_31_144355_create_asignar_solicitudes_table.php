@@ -14,12 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('asignar_solicitudes', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('idSolitd');
+                $table->foreign('idSolitd')
+                ->references('idSolitd')
+                ->on('solicitudes');
+
             $table->unsignedBigInteger('id');
                 $table->foreign('id')
                 ->references('id')
                 ->on('users');
-            $table->id();
+
             $table->timestamps();
         });
     }

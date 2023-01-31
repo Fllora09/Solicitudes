@@ -11,7 +11,7 @@ return [
     'multilevel'                    => 'Solicitudes',
     'level_one'                     => 'Solicitar',
     'level_two'                     => 'Bandeja de entrada',
-    'level_three'                   => 'Mis Solicitudes',
+    'level_three'                   => 'Asignar Tecnico',
     'labels'                        => 'ETIQUETAS',
     'important'                     => 'Importante',
     'warning'                       => 'Advertencia',

@@ -46,12 +46,13 @@ class Solicitude extends Model
     protected $fillable = ['idSolitd','titulo','detailSoli','status','user','dependencia'];
 
     protected $table = 'solicitudes';
+    protected $primaryKey = 'idSolitd';
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function dependencias()
     {
-         return $this->belongsTo(Dependencia::class, 'IdDp','nameDp');
+         return $this->belongsTo(Dependencia::class, 'IdDp');
     }
 
     /**
@@ -70,5 +71,9 @@ class Solicitude extends Model
     {
         return $this->belongsTo(User::class, 'id', 'user' );
         // return $this->hasOne('App\Models\User', 'id', 'user');
+    }
+
+    public function assignedToUser() {
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 }

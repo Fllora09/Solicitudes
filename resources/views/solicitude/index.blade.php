@@ -40,9 +40,8 @@
                                                 <th>Titulo</th>
                                                 <th>Descripcion</th>
                                                 <th>Status</th>
-                                                <th>Solicitante</th>
-                                                <th>Dependencia</th>
-                                                <th></th>
+                                                {{-- <th>Solicitante</th>
+                                                <th>Dependencia</th> --}}
                                                 <th>Acciones</th>
                                                 <th></th>
 
@@ -57,8 +56,8 @@
                                                     <td>{{ $solicitude->titulo }}</td>
                                                     <td>{{ $solicitude->detailSoli }}</td>
                                                     <td>{{ $solicitude->status }}</td>
-                                                    <td>{{ $solicitude->user}}</td>
-                                                    <td>{{ $solicitude->dependencia }}</td>
+                                                    {{-- <td>{{ $solicitude->user}}</td>
+                                                    <td>{{ $solicitude->dependencia }}</td> --}}
 
                                                     {{-- @foreach($solicitude->dependencias as $dependencia)
                                                         <td>{{ $dependencia->nameDp }}</td>
@@ -66,17 +65,25 @@
 
                                                     {{-- --}}
 
-                                                    <td>
+                                                     <td>
                                                         <form method="POST">
-                                                            {{-- <a class="btn btn-sm btn-success" href="{{ route('solicitudes.edit',$solicitude->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a> --}}
-                                                            <a class="float-left  btn btn-sm btn-success" href=""><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                            <a class="float-left  btn btn-sm btn-warning" href=""><i class="fa fa-fw fa-door-closed"></i>Cerrar</a>
                                                         </form>
                                                     </td>
+                                                    {{-- <td>
+                                                        <form method="POST">
+                                                            {{-- en este se asigna al usuario tecnico que se encarga de la solicitud"
+                                                            href="{{ route('solicitudes.edit',$solicitude->id) }}">
+                                                            <a class="float-left  btn btn-sm btn-success" href="">
+                                                                <i class="fa fa-fw fa-edit">
+                                                                </i> Editar</a>
+                                                        </form>
+                                                    </td>--}}
                                                     <td>
                                                         <form method="POST">
                                                            {{--<a class="btn btn-sm btn-primary " href="{{ route('solicitudes.show',$solicitude->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                            --}}
-                                                            <a class="float-left  btn btn-sm btn-info" href=""><i class="fa fa-fw fa-edit"></i> Show</a>
+                                                            <a class="float-left  btn btn-sm btn-info" href="{{ route('solicitudes.show',$solicitude->idSolitd) }}"><i class="fa fa-fw fa-eye"></i>Detalles</a>
                                                         </form>
                                                     </td>
                                                     <td>
